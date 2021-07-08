@@ -26,6 +26,13 @@ if [ $AZURE = "yes" ]; then
   terraform plan
   terraform destroy --auto-approve
   cd ../..
+
+  echo Destroying Azure Base Infrastructure
+  cd ./azure/base/aks
+  terraform init
+  terraform plan
+  terraform destroy --auto-approve
+  cd ../../..
 fi
 
 if [ $GCP = "yes" ]; then

@@ -3,7 +3,7 @@ This document provides some guidance on how to troubleshoot and resolve errors s
 
 ## Azure
 
-#### 1. Error creating AZURE_AL_SEQ integration.  [400] Unable to validate the Azure tenant name, verify your configuration.
+#### Error creating AZURE_AL_SEQ integration.  [400] Unable to validate the Azure tenant name, verify your configuration.
 ```
 Error: Error creating AZURE_AL_SEQ integration: 
 │   [POST] https://lwintjeffkwiat.lacework.net/api/v1/external/integrations
@@ -23,7 +23,7 @@ az login
 
 ---
 
-#### 2. Error creating AZURE_CFG integration.  [400] Error detected when fetching Azure tenant, verify your configuration.
+#### Error creating AZURE_CFG integration.  [400] Error detected when fetching Azure tenant, verify your configuration.
 ```
 ╷
 │ Error: Error creating AZURE_CFG integration: 
@@ -44,7 +44,7 @@ az login
 
 ---
 
-#### 3. Error: Creating/Updating Log Profile;StatusCode=409
+#### Error: Creating/Updating Log Profile;StatusCode=409
 
 ```
 │ Error: Error Creating/Updating Log Profile "lacework-log-profile-0849a447": insights.LogProfilesClient#CreateOrUpdate: Failure sending request: StatusCode=409 -- Original Error: autorest/azure: Service returned an error. Status=<nil> <nil>
@@ -55,6 +55,18 @@ az login
 │ 
 ╵
 ```
+
+#### Resolution: Delete the Log Profile via the Azure CLI
+
+```
+jeffkwiat@Jeffs-MacBook-Pro agentless % az monitor log-profiles list --query '[*].name'                    
+[
+  "lacework-log-profile-0849a447"
+]
+jeffkwiat@Jeffs-MacBook-Pro agentless % az monitor log-profiles delete --name lacework-log-profile-0849a447  
+```
+
+#### Error: Error building account: Error getting authenticated object ID: Error parsing json result from the Azure CLI: Error retrieving running Azure CLI: Failed to load or parse file /Users/jeffkwiat/.azure/az.sess. It will be overridden by default settings.
 
 ```
 │ Error: Error building account: Error getting authenticated object ID: Error parsing json result from the Azure CLI: Error retrieving running Azure CLI: Failed to load or parse file /Users/jeffkwiat/.azure/az.sess. It will be overridden by default settings.

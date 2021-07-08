@@ -2,12 +2,12 @@ terraform {
   required_providers {
     lacework = {
       source  = "lacework/lacework"
-      version = "0.5.0"
+      version = "=0.5.0"
     }
 
     aws = {
       source  = "hashicorp/aws"
-      version = "3.40.0"
+      version = "=3.47.0"
     }
   }
 }

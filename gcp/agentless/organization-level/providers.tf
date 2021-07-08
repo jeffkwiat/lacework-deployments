@@ -7,7 +7,7 @@ terraform {
 
     google = {
       source = "hashicorp/google"
-      version = "3.67.0"
+      version = "3.74.0"
     }
   }
 }
@@ -21,7 +21,7 @@ provider "lacework" {}
 
 module "gcp_organization_config" {
   source = "lacework/config/gcp"
-  version = "1.0.2"
+  version = "1.0.5"
 
   org_integration = var.org_integration
   organization_id = var.organization_id
